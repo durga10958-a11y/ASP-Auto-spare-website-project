@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A.S.P. Auto Spare Parts - Two wheeler spare parts, tyres, engine oils and accessories in Karaikudi.">
+    <title>A.S.P. Auto Spare Parts | Karaikudi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <a href="#home" class="brand">
+        <div class="brand-logo">ASP</div>
+        <div>
+            <h2>A.S.P. AUTO</h2>
+            <span>SPARE PARTS</span>
+        </div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <nav id="navbar">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#categories">CATEGORIES</a>
+        <a href="#products">PRODUCTS</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#reviews">REVIEWS</a>
+        <a href="#contact">CONTACT</a>
+        <a href="#admin" class="admin-link">OWNER LOGIN</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<main id="home">
+<section class="hero">
+    <div class="hero-content">
+        <span class="tag">ESTABLISHED IN 1987</span>
+        <h1>YOUR TRUSTED<br>
+            <span>TWO-WHEELER</span><br>
+            SPARE PARTS SHOP
+        </h1>
+        <p>
+            Quality products. Original spare parts.
+            Affordable prices. Trusted service.
+        </p>
+        <div class="hero-buttons">
+            <a href="#products" class="btn primary">EXPLORE PRODUCTS</a>
+            <a href="https://wa.me/919443139088"
+               target="_blank" class="btn secondary">CONTACT US</a>
+        </div>
+        <div class="experience">
+            <strong>40+</strong>
+            <span>YEARS OF EXPERIENCE</span>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="images/shop-1.jpg"
+             alt="A.S.P. Auto Spare Parts shop"
+             onerror="this.style.display='none'">
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+    <div>✓ ORIGINAL PRODUCTS</div>
+    <div>✓ AFFORDABLE PRICES</div>
+    <div>✓ QUALITY SERVICE</div>
+    <div>✓ CUSTOMER TRUST</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+    <div class="section-heading">
+        <span>WHO WE ARE</span>
+        <h2>ABOUT OUR SHOP</h2>
+        <p>Your trusted automobile spare parts destination.</p>
+    </div>
+
+    <div class="about-content">
+        <div class="about-image">
+            <img src="images/shop-2.jpg"
+                 alt="Our spare parts shop"
+                 onerror="this.src='images/shop-1.jpg'">
+        </div>
+        <div class="about-text">
+            <h3>A.S.P. AUTO SPARE PARTS</h3>
+            <p>
+                A.S.P. Auto Spare Parts has been serving customers
+                since 1987. With decades of experience, we provide
+                a wide range of two-wheeler spare parts, tyres,
+                engine oils, batteries and accessories.
+            </p>
+            <p>
+                We focus on providing original quality products
+                at affordable prices and helping customers find
+                the right spare parts for their vehicles.
+            </p>
+
+            <div class="owner-details">
+                <p><strong>Owners:</strong> Mr. Murugesan &amp; Mr. Anbumani</p>
+                <p><strong>Experience:</strong> 40 Years</p>
+                <p><strong>Established:</strong> 1987</p>
+            </div>
+            <a href="#contact" class="btn primary">KNOW MORE</a>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section categories" id="categories">
+    <div class="section-heading">
+        <span>WHAT WE OFFER</span>
+        <h2>PRODUCT CATEGORIES</h2>
+        <p>Explore our two-wheeler product categories.</p>
+    </div>
+
+    <div class="category-grid">
+        <a href="#products" class="category-card"
+           data-category="Tyres">
+            <div class="category-icon">🏍️</div>
+            <h3>TWO-WHEELER TYRES</h3>
+            <p>Quality tyres for two-wheelers.</p>
+        </a>
+
+        <a href="#products" class="category-card"
+           data-category="Engine Oil">
+            <div class="category-icon">🛢️</div>
+            <h3>ENGINE OIL</h3>
+            <p>Engine oils for better performance.</p>
+        </a>
+
+        <a href="#products" class="category-card"
+           data-category="Batteries">
+            <div class="category-icon">🔋</div>
+            <h3>BATTERIES</h3>
+            <p>Two-wheeler battery products.</p>
+        </a>
+
+        <a href="#products" class="category-card"
+           data-category="Spare Parts">
+            <div class="category-icon">⚙️</div>
+            <h3>SPARE PARTS</h3>
+            <p>All types of two-wheeler spare parts.</p>
+        </a>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products-section" id="products">
+    <div class="section-heading">
+        <span>OUR COLLECTION</span>
+        <h2>AVAILABLE PRODUCTS</h2>
+        <p>Find the right products for your two-wheeler.</p>
+    </div>
+
+    <div class="product-tools">
+        <input type="search" id="searchInput"
+               placeholder="Search products...">
+
+        <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option value="Tyres">Tyres</option>
+            <option value="Engine Oil">Engine Oil</option>
+            <option value="Batteries">Batteries</option>
+            <option value="Spare Parts">Spare Parts</option>
+        </select>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        <!-- Products are loaded using JavaScript -->
+    </div>
+    <p id="noProducts" class="empty-message" hidden>
+        No products found.
+    </p>
+</section>
+
+<!-- BRANDS -->
+<section class="brands section">
+    <div class="section-heading">
+        <span>OUR BRANDS</span>
+        <h2>PRODUCT BRANDS AVAILABLE</h2>
+    </div>
+    <div class="brand-grid">
+        <div class="brand-box">
+            <h2>EUROGRIP</h2>
+            <p>TVS Tyres</p>
+        </div>
+        <div class="brand-box">
+            <h2>SHELL</h2>
+            <p>Advance Two-Wheeler Engine Oil</p>
+        </div>
+        <div class="brand-box">
+            <h2>HERO HONDA</h2>
+            <p>Two-Wheeler Products</p>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+    <div class="section-heading">
+        <span>OUR SHOP</span>
+        <h2>SHOP GALLERY</h2>
+        <p>Take a look at our shop and products.</p>
+    </div>
+
+    <div class="gallery-grid">
+        <img src="images/shop-1.jpg" alt="Shop photo 1">
+        <img src="images/shop-2.jpg" alt="Shop photo 2">
+        <img src="images/shop-3.jpg" alt="Shop photo 3">
+        <img src="images/shop-4.jpg" alt="Shop photo 4">
+        <img src="images/shop-5.jpg" alt="Shop photo 5">
+        <img src="images/shop-6.jpg" alt="Shop photo 6">
+        <img src="images/shop-7.jpg" alt="Shop photo 7">
+        <img src="images/shop-8.jpg" alt="Shop photo 8">
+        <img src="images/shop-9.jpg" alt="Shop photo 9">
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews">
+    <div class="section-heading">
+        <span>CUSTOMER FEEDBACK</span>
+        <h2>CUSTOMER REVIEWS</h2>
+    </div>
+
+    <div id="reviewList" class="review-grid">
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Good collection of two-wheeler spare parts.</p>
+            <h4>Customer</h4>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Helpful service and affordable prices.</p>
+            <h4>Customer</h4>
+        </div>
+    </div>
+
+    <div class="review-form">
+        <h3>WRITE A REVIEW</h3>
+        <form id="reviewForm">
+            <input id="reviewName" placeholder="Your name" required>
+            <select id="reviewRating" required>
+                <option value="5">★★★★★ - Excellent</option>
+                <option value="4">★★★★ - Very Good</option>
+                <option value="3">★★★ - Good</option>
+                <option value="2">★★ - Average</option>
+                <option value="1">★ - Poor</option>
+            </select>
+            <textarea id="reviewMessage"
+                      placeholder="Write your review..."
+                      required></textarea>
+            <button class="btn primary" type="submit">
+                SUBMIT REVIEW
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+    <div class="section-heading">
+        <span>GET IN TOUCH</span>
+        <h2>CONTACT OUR SHOP</h2>
+        <p>We are happy to help you find the right spare parts.</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>SHOP ADDRESS</h3>
+            <p>National Highway 210, Aruna Nagar,
+               Karaikudi, Tamil Nadu - 630001</p>
+        </div>
+        <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <h3>PHONE NUMBER</h3>
+            <p>+91 94431 39088</p>
+            <a href="tel:+919443139088">CALL NOW</a>
+        </div>
+        <div class="contact-card">
+            <div class="contact-icon">👨‍💼</div>
+            <h3>SHOP OWNERS</h3>
+            <p>Mr. Murugesan &amp; Mr. Anbumani</p>
+        </div>
+    </div>
+
+    <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps?q=A.S.P.%20Auto%20Spare%20Parts%20Karaikudi&output=embed"
+          loading="lazy"
+          title="Shop location">
+        </iframe>
+    </div>
+</section>
+
+</main>
+
+<!-- OWNER ADMIN PAGE -->
+<section id="admin" class="admin-section" hidden>
+
+    <!-- LOGIN -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-box">
+            <div class="brand-logo">ASP</div>
+            <h2>SHOP OWNER LOGIN</h2>
+            <p>Access your shop management dashboard.</p>
+
+            <form id="loginForm">
+                <label>USERNAME</label>
+                <input id="username" type="text"
+                       placeholder="Enter username" required>
+
+                <label>PASSWORD</label>
+                <input id="password" type="password"
+                       placeholder="Enter password" required>
+
+                <button type="submit" class="btn primary full">
+                    LOGIN
+                </button>
+                <p id="loginError" class="error-message"></p>
+            </form>
+
+            <a href="#home" class="back-home">← Back to website</a>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard" id="dashboard" hidden>
+        <div class="dashboard-header">
+            <div>
+                <span>ADMIN PANEL</span>
+                <h2>SHOP MANAGEMENT</h2>
+            </div>
+            <button id="logoutButton" class="btn danger">
+                LOGOUT
+            </button>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <span>TOTAL PRODUCTS</span>
+                <strong id="totalProducts">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>TOTAL ORDERS</span>
+                <strong id="totalOrders">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>SHOP EXPERIENCE</span>
+                <strong>40+</strong>
+            </div>
+        </div>
+
+        <!-- PRODUCT MANAGEMENT -->
+        <div class="admin-panel">
+            <h3>ADD / UPDATE PRODUCTS</h3>
+
+            <form id="productForm">
+                <input type="hidden" id="editProductId">
+
+                <label>PRODUCT NAME</label>
+                <input id="productName" required
+                       placeholder="Enter product name">
+
+                <label>CATEGORY</label>
+                <select id="productCategory" required>
+                    <option value="Tyres">Tyres</option>
+                    <option value="Engine Oil">Engine Oil</option>
+                    <option value="Batteries">Batteries</option>
+                    <option value="Spare Parts">Spare Parts</option>
+                </select>
+
+                <label>PRODUCT BRAND</label>
+                <input id="productBrand" placeholder="Enter brand">
+
+                <label>PRICE (₹)</label>
+                <input id="productPrice" type="number"
+                       min="0" step="0.01" required>
+
+                <label>PRODUCT DESCRIPTION</label>
+                <textarea id="productDescription"
+                          placeholder="Enter product details"></textarea>
+
+                <label>UPLOAD PRODUCT IMAGE</label>
+                <input id="productImage" type="file"
+                       accept="image/*">
+
+                <img id="imagePreview" class="image-preview"
+                     alt="Product preview" hidden>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn primary">
+                        SAVE PRODUCT
+                    </button>
+                    <button type="button" id="cancelEdit"
+                            class="btn secondary">
+                        CLEAR FORM
+                    </button>
+                </div>
+                <p id="productMessage"></p>
+            </form>
+        </div>
+
+        <!-- MANAGE PRODUCTS -->
+        <div class="admin-panel">
+            <h3>MANAGE AVAILABLE PRODUCTS</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>IMAGE</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminProductList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ORDERS -->
+        <div class="admin-panel">
+            <h3>CUSTOMER ORDERS / ENQUIRIES</h3>
+            <div id="orderList"></div>
+            <button class="btn danger" id="clearOrders">
+                CLEAR ALL ORDERS
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <h2>A.S.P. AUTO SPARE PARTS</h2>
+        <p>Quality Products | Original Spare Parts | Affordable Prices</p>
+        <p>Established 1987 | 40 Years of Experience</p>
+        <p>Owners: Mr. Murugesan &amp; Mr. Anbumani</p>
+        <p>Phone: +91 9443139088</p>
+        <p>© <span id="year"></span> A.S.P. Auto Spare Parts.
+           All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/919443139088?text=Hello%20A.S.P.%20Auto%20Spare%20Parts"
+   target="_blank" class="whatsapp" aria-label="WhatsApp">
+    WA
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
