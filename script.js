@@ -220,7 +220,7 @@ function displayProducts() {
             <img
                 src="${escapeHTML(product.image)}"
                 alt="${escapeHTML(product.name)}"
-                onerror="this.src='images/product-1.jpg'">
+                onerror="this.src=product-1.jpg'">
 
             <div class="product-info">
                 <span class="category-label">
