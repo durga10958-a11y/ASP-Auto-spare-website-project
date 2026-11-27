@@ -22,7 +22,7 @@ const defaultProducts = [
         brand: "EUROGRIP",
         price: 1200,
         description: "Quality two-wheeler tyre for reliable performance.",
-        image: "images/product-1.jpg"
+        image: "product-1.jpg"
     },
     {
         id: 2,
@@ -31,7 +31,7 @@ const defaultProducts = [
         brand: "SHELL",
         price: 450,
         description: "Two-wheeler engine oil for smooth performance.",
-        image: "images/product-2.jpg"
+        image: "product-2.jpg"
     },
     {
         id: 3,
@@ -40,7 +40,7 @@ const defaultProducts = [
         brand: "Two Wheeler",
         price: 950,
         description: "Battery products for two-wheelers.",
-        image: "images/product-3.jpg"
+        image: "product-3.jpg"
     },
     {
         id: 4,
@@ -49,7 +49,7 @@ const defaultProducts = [
         brand: "HERO HONDA",
         price: 250,
         description: "Two-wheeler spare parts and accessories.",
-        image: "images/product-4.jpg"
+        image: "product-4.jpg"
     }
 ];
 
@@ -490,7 +490,7 @@ function saveProduct(event) {
         description: description,
         image: selectedImage ||
             (existingProduct ? existingProduct.image :
-            "images/product-1.jpg")
+            "product-1.jpg")
     };
 
     if (editId) {
