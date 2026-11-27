@@ -14,9 +14,8 @@ const OWNER_USERNAME = "admin";
 const OWNER_PASSWORD = "asp1987";
 
 // IMAGE PATHS
-const IMAGE_FOLDER = "images/";
-
-const DEFAULT_IMAGE = IMAGE_FOLDER + "product-1.jpg";
+// Images are in the same folder as index.html
+const DEFAULT_IMAGE = "product-1.jpg";
 
 // DEFAULT PRODUCTS
 const defaultProducts = [
@@ -27,7 +26,7 @@ const defaultProducts = [
         brand: "EUROGRIP",
         price: 1200,
         description: "Quality two-wheeler tyre for reliable performance.",
-        image: IMAGE_FOLDER + "product-1.jpg"
+        image: "product-1.jpg"
     },
     {
         id: 2,
@@ -36,7 +35,7 @@ const defaultProducts = [
         brand: "SHELL",
         price: 450,
         description: "Two-wheeler engine oil for smooth performance.",
-        image: IMAGE_FOLDER + "product-2.jpg"
+        image: "product-2.jpg"
     },
     {
         id: 3,
@@ -45,7 +44,7 @@ const defaultProducts = [
         brand: "Two Wheeler",
         price: 950,
         description: "Battery products for two-wheelers.",
-        image: IMAGE_FOLDER + "product-3.jpg"
+        image: "product-3.jpg"
     },
     {
         id: 4,
@@ -54,7 +53,7 @@ const defaultProducts = [
         brand: "HERO HONDA",
         price: 250,
         description: "Two-wheeler spare parts and accessories.",
-        image: IMAGE_FOLDER + "product-4.jpg"
+        image: "product-4.jpg"
     }
 ];
 
@@ -77,6 +76,7 @@ function saveStorage(key, value) {
         localStorage.setItem(key, JSON.stringify(value));
         return true;
     } catch (error) {
+        console.error("Storage saving error:", error);
         alert("Storage is full or unavailable. Try using a smaller image.");
         return false;
     }
@@ -113,6 +113,7 @@ function money(amount) {
 // =====================================
 
 function handleImageError(image) {
+    // Prevent repeated fallback attempts
     if (image.dataset.fallbackUsed === "true") {
         image.style.display = "none";
         return;
@@ -134,8 +135,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Footer year
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 
     displayProducts();
     displayReviews();
