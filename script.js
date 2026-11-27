@@ -13,6 +13,11 @@ const REVIEW_KEY = "asp_reviews";
 const OWNER_USERNAME = "admin";
 const OWNER_PASSWORD = "asp1987";
 
+// IMAGE PATHS
+const IMAGE_FOLDER = "images/";
+
+const DEFAULT_IMAGE = IMAGE_FOLDER + "product-1.jpg";
+
 // DEFAULT PRODUCTS
 const defaultProducts = [
     {
@@ -22,7 +27,7 @@ const defaultProducts = [
         brand: "EUROGRIP",
         price: 1200,
         description: "Quality two-wheeler tyre for reliable performance.",
-        image: "product-1.jpg"
+        image: IMAGE_FOLDER + "product-1.jpg"
     },
     {
         id: 2,
@@ -31,7 +36,7 @@ const defaultProducts = [
         brand: "SHELL",
         price: 450,
         description: "Two-wheeler engine oil for smooth performance.",
-        image: "product-2.jpg"
+        image: IMAGE_FOLDER + "product-2.jpg"
     },
     {
         id: 3,
@@ -40,7 +45,7 @@ const defaultProducts = [
         brand: "Two Wheeler",
         price: 950,
         description: "Battery products for two-wheelers.",
-        image: "product-3.jpg"
+        image: IMAGE_FOLDER + "product-3.jpg"
     },
     {
         id: 4,
@@ -49,11 +54,13 @@ const defaultProducts = [
         brand: "HERO HONDA",
         price: 250,
         description: "Two-wheeler spare parts and accessories.",
-        image: "product-4.jpg"
+        image: IMAGE_FOLDER + "product-4.jpg"
     }
 ];
 
+// =====================================
 // GENERAL HELPERS
+// =====================================
 
 function readStorage(key, fallback) {
     try {
@@ -101,15 +108,32 @@ function money(amount) {
     return "₹" + Number(amount).toLocaleString("en-IN");
 }
 
+// =====================================
+// IMAGE ERROR HANDLER
+// =====================================
+
+function handleImageError(image) {
+    if (image.dataset.fallbackUsed === "true") {
+        image.style.display = "none";
+        return;
+    }
+
+    image.dataset.fallbackUsed = "true";
+    image.src = DEFAULT_IMAGE;
+}
+
+// =====================================
 // INITIALIZE WEBSITE
+// =====================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Load default products only for a new browser
+    // Load default products for a new browser
     if (localStorage.getItem(PRODUCT_KEY) === null) {
         saveStorage(PRODUCT_KEY, defaultProducts);
     }
 
+    // Footer year
     document.getElementById("year").textContent =
         new Date().getFullYear();
 
@@ -143,8 +167,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".category-card")
         .forEach(card => {
             card.addEventListener("click", function () {
+
                 document.getElementById("categoryFilter").value =
                     this.dataset.category;
+
                 displayProducts();
             });
         });
@@ -161,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("productForm")
         .addEventListener("submit", saveProduct);
 
-    // CLEAR / CANCEL EDIT
+    // CANCEL EDIT
     document.getElementById("cancelEdit")
         .addEventListener("click", resetProductForm);
 
@@ -217,12 +243,14 @@ function displayProducts() {
 
     grid.innerHTML = filtered.map(product => `
         <article class="product-card">
+
             <img
-                src="${escapeHTML(product.image)}"
+                src="${escapeHTML(product.image || DEFAULT_IMAGE)}"
                 alt="${escapeHTML(product.name)}"
-                onerror="this.src=product-1.jpg'">
+                onerror="handleImageError(this)">
 
             <div class="product-info">
+
                 <span class="category-label">
                     ${escapeHTML(product.category)}
                 </span>
@@ -236,12 +264,15 @@ function displayProducts() {
                 </div>
 
                 <div class="product-actions">
+
                     <button
                         class="btn primary"
                         onclick="orderProduct(${Number(product.id)})">
                         ENQUIRE
                     </button>
+
                 </div>
+
             </div>
         </article>
     `).join("");
@@ -489,8 +520,7 @@ function saveProduct(event) {
         price: price,
         description: description,
         image: selectedImage ||
-            (existingProduct ? existingProduct.image :
-            "product-1.jpg")
+            (existingProduct ? existingProduct.image : DEFAULT_IMAGE)
     };
 
     if (editId) {
@@ -538,9 +568,12 @@ function displayAdminProducts() {
 
     tbody.innerHTML = products.map(product => `
         <tr>
+
             <td>
-                <img src="${escapeHTML(product.image)}"
-                     alt="${escapeHTML(product.name)}">
+                <img
+                    src="${escapeHTML(product.image || DEFAULT_IMAGE)}"
+                    alt="${escapeHTML(product.name)}"
+                    onerror="handleImageError(this)">
             </td>
 
             <td>${escapeHTML(product.name)}</td>
@@ -548,6 +581,7 @@ function displayAdminProducts() {
             <td>${money(product.price)}</td>
 
             <td>
+
                 <button class="small-btn edit-btn"
                     onclick="editProduct(${Number(product.id)})">
                     EDIT
@@ -557,7 +591,9 @@ function displayAdminProducts() {
                     onclick="deleteProduct(${Number(product.id)})">
                     DELETE
                 </button>
+
             </td>
+
         </tr>
     `).join("");
 }
@@ -586,11 +622,11 @@ function editProduct(id) {
     document.getElementById("productDescription").value =
         product.description || "";
 
-    selectedImage = product.image;
+    selectedImage = product.image || "";
 
     const preview = document.getElementById("imagePreview");
 
-    preview.src = product.image;
+    preview.src = selectedImage || DEFAULT_IMAGE;
     preview.hidden = false;
 
     document.getElementById("productMessage").textContent =
@@ -690,9 +726,11 @@ function displayOrders() {
 
             <a class="btn primary"
                href="https://wa.me/${encodeURIComponent(order.phone.replace(/\D/g, ""))}"
-               target="_blank">
+               target="_blank"
+               rel="noopener noreferrer">
                 CONTACT CUSTOMER
             </a>
+
         </div>
     `).join("");
 }
@@ -770,7 +808,8 @@ function submitReview(event) {
     document.getElementById("reviewForm").reset();
 
     alert("Thank you for your review!");
-} 
+}
+
 function displayReviews() {
 
     const reviews = getReviews();
@@ -793,15 +832,18 @@ function displayReviews() {
 
     const savedHTML = reviews.map(review => `
         <div class="review-card">
+
             <div class="stars">
                 ${"★".repeat(Number(review.rating))}
                 ${"☆".repeat(5 - Number(review.rating))}
             </div>
+
             <p>${escapeHTML(review.message)}</p>
+
             <h4>${escapeHTML(review.name)}</h4>
+
         </div>
     `).join("");
 
     container.innerHTML = savedHTML + defaultReviews;
 }
-
